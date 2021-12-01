@@ -1,5 +1,7 @@
 package com.lbw.Heap;
 
+import com.lbw.utils.ArrayUtils;
+
 import java.util.Arrays;
 import java.util.PriorityQueue;
 
@@ -67,6 +69,32 @@ public class SortArrayDistanceLessK {
             }
         }
         return arr;
+    }
+
+    public static void main(String[] args) {
+        int testTime = 500000;
+        int maxSize = 100;
+        int maxValue = 10000;
+        boolean succeed = true;
+
+        for (int i = 0; i < testTime; i++) {
+            int k = (int) (Math.random() * maxSize) + 1;
+            int[] arr = randomArrayNoMoveMoreK(maxSize, maxValue, k);
+            int[] arr1 = ArrayUtils.copyArray(arr);
+            int[] arr2 = ArrayUtils.copyArray(arr);
+            sortedArrDistanceLessK(arr1, k);
+            Arrays.sort(arr2);
+            if (!ArrayUtils.isEqual(arr1, arr2)) {
+                succeed = false;
+                ArrayUtils.printArray(arr1);
+                System.out.println("---");
+                ArrayUtils.printArray(arr2);
+                break;
+            }
+        }
+
+        System.out.println(succeed ? "Nice!" : "Oops!");
+
     }
 
 
