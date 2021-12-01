@@ -14,6 +14,7 @@ package com.lbw.Heap;
  * 思路：
  *  将前K+1个数，放在一个小跟堆里面。然后弹出小跟堆第一个数，则这个数就可以放在最前面。
  *  再放入后面一个数，弹出最小数，放在最前。以此类推。
+ *  小根堆使用java自带的结构
  * @createTime 2021年11月30日 15:35:00
  */
 public class SortArrayDistanceLessK {
