@@ -3,6 +3,7 @@ package com.lbw.Heap;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashMap;
+import java.util.PriorityQueue;
 
 /**
  * @author admin
@@ -96,9 +97,143 @@ public class Heap02 {
             heapInsert(valueIndex);
             heapify(valueIndex,heapSize);
             //两个逻辑都放上，但代码执行的时候，只会走某一个逻辑，要么向上要么向下
+        }
 
+        public T pop() {
+            T ans = heap.get(0);
+            int end = heapSize - 1;
+            swap(0, end);
+            heap.remove(end);
+            indexMap.remove(ans);
+            heapify(0, --heapSize);
+            return ans;
         }
 
     }
+
+    public static class Student {
+        public int classNo;
+        public int age;
+        public int id;
+
+        public Student(int c, int a, int i) {
+            classNo = c;
+            age = a;
+            id = i;
+        }
+    }
+
+    public static class StudentComparator implements Comparator<Student> {
+
+        public int compare(Student o1, Student o2) {
+            return o1.age - o2.age;
+        }
+    }
+
+    public static void main(String[] args) {
+        Student s1 = null;
+        Student s2 = null;
+        Student s3 = null;
+        Student s4 = null;
+        Student s5 = null;
+        Student s6 = null;
+
+        s1 = new Student(2, 50, 11111);
+        s2 = new Student(1, 60, 22222);
+        s3 = new Student(6, 10, 33333);
+        s4 = new Student(3, 20, 44444);
+        s5 = new Student(7, 72, 55555);
+        s6 = new Student(1, 14, 66666);
+
+        PriorityQueue<Student> heap = new PriorityQueue<Student>(new StudentComparator());
+        heap.add(s1);
+        heap.add(s2);
+        heap.add(s3);
+        heap.add(s4);
+        heap.add(s5);
+        heap.add(s6);
+        while (!heap.isEmpty()) {
+            Student cur = heap.poll();
+            System.out.println(cur.classNo + "," + cur.age + "," + cur.id);
+        }
+
+        System.out.println("===============");
+
+        MyHeap<Student> myHeap = new MyHeap<>(new StudentComparator());
+        myHeap.push(s1);
+        myHeap.push(s2);
+        myHeap.push(s3);
+        myHeap.push(s4);
+        myHeap.push(s5);
+        myHeap.push(s6);
+        while (!myHeap.isEmpty()) {
+            Student cur = myHeap.pop();
+            System.out.println(cur.classNo + "," + cur.age + "," + cur.id);
+        }
+
+        System.out.println("===============");
+
+        s1 = new Student(2, 50, 11111);
+        s2 = new Student(1, 60, 22222);
+        s3 = new Student(6, 10, 33333);
+        s4 = new Student(3, 20, 44444);
+        s5 = new Student(7, 72, 55555);
+        s6 = new Student(1, 14, 66666);
+
+        heap = new PriorityQueue<>(new StudentComparator());
+
+        heap.add(s1);
+        heap.add(s2);
+        heap.add(s3);
+        heap.add(s4);
+        heap.add(s5);
+        heap.add(s6);
+
+        s2.age = 6;
+        s4.age = 12;
+        s5.age = 10;
+        s6.age = 84;
+
+        while (!heap.isEmpty()) {
+            Student cur = heap.poll();
+            System.out.println(cur.classNo + "," + cur.age + "," + cur.id);
+        }
+
+        System.out.println("===============");
+
+        s1 = new Student(2, 50, 11111);
+        s2 = new Student(1, 60, 22222);
+        s3 = new Student(6, 10, 33333);
+        s4 = new Student(3, 20, 44444);
+        s5 = new Student(7, 72, 55555);
+        s6 = new Student(1, 14, 66666);
+
+        myHeap = new MyHeap<>(new StudentComparator());
+
+        myHeap.push(s1);
+        myHeap.push(s2);
+        myHeap.push(s3);
+        myHeap.push(s4);
+        myHeap.push(s5);
+        myHeap.push(s6);
+
+        s2.age = 6;
+        myHeap.resign(s2);
+        s4.age = 12;
+        myHeap.resign(s4);
+        s5.age = 10;
+        myHeap.resign(s5);
+        s6.age = 84;
+        myHeap.resign(s6);
+
+        while (!myHeap.isEmpty()) {
+            Student cur = myHeap.pop();
+            System.out.println(cur.classNo + "," + cur.age + "," + cur.id);
+        }
+
+
+    }
+
+
 
 }
