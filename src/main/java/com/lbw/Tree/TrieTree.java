@@ -6,6 +6,9 @@ package com.lbw.Tree;
  * @ClassName TrieTree.java
  * @Description 前缀树的两种实现；
  * pass是经过此节点的次数；end是以此节点为结束的次数。
+ *
+ * 前缀树的用途：
+ *  如果发现某题，有前缀树的特征，那可以把节点的信息进行丰富。以达到结题目的。
  * @createTime 2021年12月06日 15:24:00
  */
 public class TrieTree {
@@ -14,6 +17,7 @@ public class TrieTree {
         public int end;
         public Node1[] nexts;
 
+        //node1的例子是，只存小写的a-z，如果是很多字符，那使用Node2（用阿斯科码直接对应）
         public Node1() {
             pass = 0;
             end = 0;
