@@ -4,6 +4,12 @@ import com.lbw.utils.ArrayUtils;
 
 import java.util.Arrays;
 
+/**
+ * 选择排序的实现：
+ *  两层for循环，第一层是挨个指向所有元素。第二层是看当前以及后面元素的最小值，放在第一层的位置。
+ *  里层就是不断地求后面数组的最小值，放在外层的位置上。
+ *  时间复杂度O(n^2) 空间复杂的O(1) 没有稳定性
+ */
 public class SelectionSort implements BowenSorts {
 
 
