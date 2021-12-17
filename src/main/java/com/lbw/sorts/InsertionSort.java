@@ -18,6 +18,7 @@ import com.lbw.utils.ArrayUtils;
  *      [1 3 4 5 2 7]
  *      ...
  *  以此类推
+ *  时间复杂度O(N^2) 空间O(1) 有稳定性
  * @createTime 2021年01月25日 15:12:00
  */
 public class InsertionSort implements BowenSorts {
