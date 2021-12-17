@@ -7,6 +7,17 @@ import com.lbw.utils.ArrayUtils;
  * @version 1.0.0
  * @ClassName InsertionSort.java
  * @Description 插入排序
+ * 实现：
+ *  类似于放扑克牌。从后往前扫描，找到位置后插入。
+ *  外层循环的i 表示：从0到i的位置已经有序了。理解：
+ *      [5 1 4 3 2 7]
+ *  i=0 [5 1 4 3 2 7]
+ *  i=1 [1 5 4 3 2 7]
+ *  i=2 [1 4 5 3 2 7]
+ *  i=3 [1 4 3 5 2 7]
+ *      [1 3 4 5 2 7]
+ *      ...
+ *  以此类推
  * @createTime 2021年01月25日 15:12:00
  */
 public class InsertionSort implements BowenSorts {
